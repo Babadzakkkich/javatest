@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MainTest {
     @Test
-    public void testMainOutputWithTrim() {
+    public void testMainOutputWithNewLine() {
         PrintStream originalOut = System.out;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
@@ -15,8 +15,8 @@ public class MainTest {
             System.setOut(new PrintStream(outputStream));
             Main.main(new String[]{});
 
-            String output = outputStream.toString().trim();
-            assertEquals("Hello and welcome!", output);
+            String output = outputStream.toString();
+            assertEquals("Hello and welcome!" + System.lineSeparator(), output);
 
         } finally {
             System.setOut(originalOut);
